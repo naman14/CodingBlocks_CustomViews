@@ -1,7 +1,9 @@
 package test.uitest;
 
-import android.animation.Animator;
+import android.animation.Keyframe;
 import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
+import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.BounceInterpolator;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -59,8 +62,35 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startAnimation() {
-        Animator animator = ObjectAnimator.ofFloat(textView, "translationX", 0f, 600f);
-        animator.setDuration(100);
+//        Animator animator = ObjectAnimator.ofFloat(textView, "translationX", 0f, 600f);
+//        animator.setDuration(300);
+//        animator.start();
+
+//        Path path = new Path();
+//        path.moveTo(0, 0);
+//        path.lineTo(1200, 0);
+//        path.lineTo(1200, 1200);
+//        path.lineTo(0, 1200);
+//        path.lineTo(0, 0);
+//
+//        ValueAnimator animator1 = ObjectAnimator.ofFloat(textView, "x", "y", path);
+//        animator1.setDuration(1500);
+//        animator1.setInterpolator(new AccelerateDecelerateInterpolator());
+//        animator1.start();
+
+        Keyframe kf0 = Keyframe.ofFloat(0f, 0f);
+        Keyframe kf1 = Keyframe.ofFloat(0.5f, 200f);
+        Keyframe kf2 = Keyframe.ofFloat(1f, 400f);
+
+        PropertyValuesHolder phv = PropertyValuesHolder.ofKeyframe("radius", kf0, kf1, kf2);
+
+        ValueAnimator animator = ObjectAnimator.ofPropertyValuesHolder(customView, phv);
+        animator.setDuration(500);
+        animator.setInterpolator(new BounceInterpolator());
         animator.start();
+    }
+
+    public void setRadius(float value) {
+        customView.setRadius(value);
     }
 }
