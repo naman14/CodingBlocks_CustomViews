@@ -9,6 +9,7 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_gravity="center"
+        android:layout_marginTop="100dp"
         android:src="@drawable/image"
         android:transitionName="transition_image" />
 
@@ -16,5 +17,16 @@
         android:id="@+id/btn_launch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Launch second activity" />
+        android:text="Launch second activity"
+        android:transitionName="transition_button"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:id="@+id/sample_text"
+        android:text="This is a sample text"
+        android:transitionName="transition_text" />
 </LinearLayout>
