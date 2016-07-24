@@ -10,7 +10,7 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
-    CustomView customView;
+    RunnableCustomView customView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,13 +19,13 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        customView = (CustomView) findViewById(R.id.custom_view);
+        customView = (RunnableCustomView) findViewById(R.id.custom_view);
 
-       FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              customView.setRadius(400);
+//              customView.setRadius(400);
             }
         });
     }

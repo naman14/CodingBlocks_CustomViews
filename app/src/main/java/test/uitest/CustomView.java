@@ -46,7 +46,6 @@ public class CustomView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawCircle(getWidth() / 2, getHeight() / 2, radius, paint);
-
     }
 
     @Override
