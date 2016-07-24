@@ -1,5 +1,6 @@
 package test.uitest;
 
+import android.animation.Animator;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Pair;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,18 +34,30 @@ public class FirstActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                launchSecondActivity();
+                createCircularReveal();
             }
         });
+    }
+
+    private void createCircularReveal() {
+        float endRadius = Math.max(image.getWidth() / 2, image.getHeight() / 2);
+        Animator animator = ViewAnimationUtils.
+                createCircularReveal(image,
+                        image.getMeasuredWidth() / 2,
+                        image.getMeasuredHeight() / 2,
+                        0,
+                        endRadius);
+        image.setVisibility(View.VISIBLE);
+        animator.setDuration(1000);
+        animator.start();
+
     }
 
     private void launchSecondActivity() {
         Intent intent = new Intent(this, SecondActivity.class);
 
         ActivityOptions options =
-                ActivityOptions.makeSceneTransitionAnimation(this, Pair.create((View) image, "transition_image"),
-                        Pair.create((View) button, "transition_button"),
-                        Pair.create((View) textView, "transition_text"));
+                ActivityOptions.makeSceneTransitionAnimation(this, Pair.create((View) image, "transition_image"));
         startActivity(intent, options.toBundle());
     }
 }

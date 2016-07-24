@@ -4,30 +4,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ImageView
+    <View
         android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_gravity="top"
+        android:background="#009688"
         android:scaleType="centerCrop"
-        android:src="@drawable/image"
         android:transitionName="transition_image" />
 
     <Button
         android:id="@+id/btn_launch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="120dp"
-        android:text="Hide second activity"
-        android:transitionName="transition_button"
-        android:layout_gravity="center_horizontal"/>
+        android:text="Hide second activity" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:text="This is a sample text"
-        android:transitionName="transition_text" />
+        android:text="This is a sample text" />
 
 </LinearLayout>
