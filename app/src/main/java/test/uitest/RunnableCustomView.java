@@ -12,17 +12,16 @@ import android.view.View;
  */
 public class RunnableCustomView extends View {
 
-    float xPos = 0;
+    float radius = 0;
     Paint paint;
-
 
     private Runnable animateLine = new Runnable() {
         @Override
         public void run() {
             boolean reachedEnd = false;
-            xPos = xPos + 10;
+            radius = radius + 10;
 
-            if (xPos <= getWidth()) {
+            if (radius <= 400) {
                 invalidate();
             } else reachedEnd = true;
 
@@ -31,7 +30,6 @@ public class RunnableCustomView extends View {
 
         }
     };
-
 
     public RunnableCustomView(Context context) {
         super(context);
@@ -46,7 +44,6 @@ public class RunnableCustomView extends View {
     private void init() {
         paint = new Paint();
         paint.setColor(Color.BLACK);
-        paint.setStrokeWidth(10);
         post(animateLine);
     }
 
@@ -54,6 +51,6 @@ public class RunnableCustomView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        canvas.drawLine(0, getHeight() / 2, xPos, getHeight() / 2, paint);
+        canvas.drawCircle(getWidth() / 2, getHeight() / 2, radius, paint);
     }
 }
