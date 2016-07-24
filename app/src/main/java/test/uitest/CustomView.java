@@ -15,6 +15,7 @@ public class CustomView extends View {
 
     Paint paint;
     int color;
+    float radius;
 
     public CustomView(Context context) {
         super(context);
@@ -25,6 +26,7 @@ public class CustomView extends View {
         super(context, attrs);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.CustomView);
         this.color = ta.getColor(R.styleable.CustomView_circleColor, Color.BLUE);
+        this.radius = ta.getDimension(R.styleable.CustomView_circleRadius, 200);
         ta.recycle();
         init();
 
@@ -38,13 +40,12 @@ public class CustomView extends View {
     private void init() {
         paint = new Paint();
         paint.setColor(color);
-
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawCircle(getWidth() / 2, getHeight() / 2, 400, paint);
+        canvas.drawCircle(getWidth() / 2, getHeight() / 2, radius, paint);
 
     }
 
@@ -60,6 +61,11 @@ public class CustomView extends View {
 
     public void setColor(int color) {
         paint.setColor(color);
+        invalidate();
+    }
+
+    public void setRadius(float radius) {
+        this.radius = radius;
         invalidate();
     }
 }
